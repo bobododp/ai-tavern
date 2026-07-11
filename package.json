@@ -1,6 +1,6 @@
 {
   "name": "ai-tavern-desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI Tavern local desktop prototype",
   "author": "AI Tavern",
   "main": "electron/main.js",
@@ -30,7 +30,6 @@
       "assets/**/*",
       "scripts/**/*",
       "electron/**/*",
-      "最终交付说明.md",
       "!generated-images/**/*",
       "!backups/**/*",
       "!dist/**/*",
