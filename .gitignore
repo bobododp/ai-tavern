@@ -3,3 +3,9 @@ dist/
 generated-images/
 backups/
 *.log
+
+# 本地开发与验收资料，不发布到公开仓库
+最终交付说明.md
+问题清单.md
+项目.md
+验收清单.md
