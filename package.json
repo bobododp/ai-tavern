@@ -1,0 +1,58 @@
+{
+  "name": "ai-tavern-desktop",
+  "version": "1.0.0",
+  "description": "AI Tavern local desktop prototype",
+  "author": "AI Tavern",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "check": "node --check app.js && node --check image-proxy.js && node --check electron/main.js && node --check electron/preload.js",
+    "check:scripts": "node --check scripts/core.js && node --check scripts/story-data.js && node --check scripts/story-storage.js && node --check scripts/story-runtime.js && node --check scripts/prompt-presets.js && node --check scripts/story-engine.js && node --check scripts/story-editor.js && node --check scripts/ui-render.js && node --check scripts/ui-events.js && node --check scripts/dom.js && node --check scripts/state.js && node --check scripts/bootstrap.js",
+    "app:dev": "electron .",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "local.ai-tavern.desktop",
+    "productName": "AI酒馆",
+    "icon": "assets/app-icon.ico",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "image-proxy.js",
+      "assets/**/*",
+      "scripts/**/*",
+      "electron/**/*",
+      "最终交付说明.md",
+      "!generated-images/**/*",
+      "!backups/**/*",
+      "!dist/**/*",
+      "!.git/**/*",
+      "!node_modules/.cache/**/*"
+    ],
+    "asar": true,
+    "win": {
+      "icon": "assets/app-icon.ico",
+      "signAndEditExecutable": false,
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "installerIcon": "assets/app-icon.ico",
+      "uninstallerIcon": "assets/app-icon.ico",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

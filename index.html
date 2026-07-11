@@ -1,0 +1,891 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 酒馆产品原型</title>
+    <link rel="stylesheet" href="styles.css?v=20260704-1" />
+  </head>
+  <body data-skin="classic">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">
+              <img src="assets/app-icon.png" alt="" />
+            </div>
+            <strong class="brand-title">AI 酒馆</strong>
+          </div>
+          <button
+            class="ghost-button sidebar-toggle"
+            type="button"
+            data-toggle-sidebar
+            aria-label="折叠侧边栏"
+            title="折叠侧边栏"
+          >
+            <span class="button-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <nav class="nav" aria-label="主要页面">
+          <button class="nav-item active" data-view="home" title="主页">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 11.2 12 5.2l7.5 6"></path>
+                <path d="M6.5 10.7V19h11v-8.3"></path>
+              </svg>
+            </span>
+            <span class="nav-label">主页</span>
+          </button>
+          <button class="nav-item" data-view="templates" title="故事板">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 5.5h6.2c1.8 0 3.3 1.5 3.3 3.3V19a2.8 2.8 0 0 0-2.8-2.8H4.5z"></path>
+                <path d="M19.5 5.5h-6.2c-1.8 0-3.3 1.5-3.3 3.3V19a2.8 2.8 0 0 1 2.8-2.8h6.7z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">故事板</span>
+          </button>
+          <button class="nav-item" data-view="gallery" title="画廊">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4.5" y="5" width="15" height="13.5" rx="2"></rect>
+                <circle cx="9" cy="9" r="1.2"></circle>
+                <path d="m7 16 3.3-4 2.5 3 2.1-2.6L19 16"></path>
+              </svg>
+            </span>
+            <span class="nav-label">画廊</span>
+          </button>
+          <button class="nav-item" data-view="settings" title="设置">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19 12a7 7 0 0 0-.1-1l1.8-1.4-2-3.4-2.2.9a7 7 0 0 0-1.8-1l-.2-2.4h-4l-.2 2.4a7 7 0 0 0-1.8 1l-2.2-.9-2 3.4L5.1 11a7 7 0 0 0 0 2l-1.8 1.4 2 3.4 2.2-.9a7 7 0 0 0 1.8 1l.2 2.4h4l.2-2.4a7 7 0 0 0 1.8-1l2.2.9 2-3.4L18.9 13c.1-.3.1-.7.1-1z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">设置</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-actions">
+          <button class="sidebar-action primary-button" type="button" data-open-create data-action="create-story">
+            <span class="action-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+            </span>
+            <span class="action-label">创建故事</span>
+          </button>
+          <button class="sidebar-action secondary-button theme-toggle" type="button" data-theme-toggle>
+            <span class="action-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3.5a8.5 8.5 0 1 0 8.1 11.1A7.2 7.2 0 0 1 12 3.5z"></path>
+              </svg>
+            </span>
+            <span class="action-label">亮色</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="view active" id="home-view">
+          <section class="chat-panel" id="chat-panel">
+            <div class="chat-ambient" aria-hidden="true"></div>
+
+            <div class="chat-toolbar">
+              <div class="chat-title">
+                <p class="eyebrow">Live Story</p>
+                <h3>当前故事</h3>
+                <div class="compact-meta">
+                  <span>黑暗森林事件</span>
+                  <span>下一章：探索星空</span>
+                  <span>进度 68%</span>
+                  <span id="save-status">已保存</span>
+                </div>
+              </div>
+
+              <div class="chat-controls">
+                <div class="usage-row">
+                  <section class="api-usage" aria-label="API 消耗量">
+                    <div>
+                      <span>估算消耗</span>
+                      <strong id="session-cost">¥0.18</strong>
+                    </div>
+                    <div>
+                      <span>累计 Token</span>
+                      <strong id="token-count">12.8K</strong>
+                    </div>
+                    <div>
+                      <span>估算预算</span>
+                      <strong id="budget-value">18%</strong>
+                    </div>
+                  </section>
+
+                  <section class="context-meter" aria-label="上下文占用">
+                    <div>
+                      <span>估算占用</span>
+                      <strong id="context-percent">36%</strong>
+                    </div>
+                    <div class="context-track">
+                      <span id="context-bar"></span>
+                    </div>
+                    <small id="context-status">上下文正常</small>
+                  </section>
+                </div>
+
+                <div class="toolbar-actions">
+                  <div class="context-actions">
+                    <button class="secondary-button small" type="button" data-open-context>
+                      上下文
+                    </button>
+                  </div>
+                  <div class="segmented" role="group" aria-label="叙事视角">
+                    <button class="active" type="button" data-perspective="first">第一人称</button>
+                    <button type="button" data-perspective="second">第二人称</button>
+                    <button type="button" data-perspective="third">第三人称</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="messages" aria-live="polite">
+              <div class="message npc" data-message-id="seed-npc-1">
+                <div class="message-topline">
+                  <div class="message-actions">
+                    <button type="button" data-message-action="copy">复制</button>
+                    <button type="button" data-message-action="edit">编辑</button>
+                    <button type="button" data-message-action="regenerate">重试</button>
+                    <button type="button" data-message-action="delete">删除</button>
+                  </div>
+                </div>
+                <p>“星盘亮了。你看见了吗？这不是秘境入口，更像是一条通向天外的路。”</p>
+              </div>
+
+              <div class="message user" data-message-id="seed-user-1">
+                <div class="message-topline">
+                  <div class="message-actions">
+                    <button type="button" data-message-action="copy">复制</button>
+                    <button type="button" data-message-action="edit">编辑</button>
+                    <button type="button" data-message-action="regenerate">重试</button>
+                    <button type="button" data-message-action="delete">删除</button>
+                  </div>
+                </div>
+                <p>我把星盘收进袖中，先确认黑袍人是否还在附近。</p>
+              </div>
+
+              <div class="message npc" data-message-id="seed-npc-2">
+                <div class="message-topline">
+                  <div class="message-actions">
+                    <button type="button" data-message-action="copy">复制</button>
+                    <button type="button" data-message-action="edit">编辑</button>
+                    <button type="button" data-message-action="regenerate">重试</button>
+                    <button type="button" data-message-action="delete">删除</button>
+                  </div>
+                </div>
+                <p>雾气忽然向两侧分开，林中传来金属拖过石面的声音。你的灵识捕捉到一缕陌生的星辉。</p>
+              </div>
+            </div>
+
+            <div class="chat-bottom-tools">
+              <button
+                class="context-compress-button"
+                type="button"
+                data-compress-context
+                title="压缩上下文"
+              >
+                <span id="context-ring">36%</span>
+              </button>
+              <span class="context-mini-label">压缩</span>
+              <span id="context-bottom-status" class="context-inline-status">正常</span>
+              <button class="secondary-button small tool-pill" type="button" data-open-context>
+                上下文
+              </button>
+              <button class="secondary-button small tool-pill" type="button" data-generate-image>
+                画面
+              </button>
+            </div>
+
+            <div class="generation-status" id="generation-status" hidden>
+              <span>正在生成回复…</span>
+              <button class="ghost-button small" type="button" id="stop-generation">停止生成</button>
+            </div>
+
+            <form class="composer" id="composer">
+              <div class="input-modes" aria-label="输入模式">
+                <button class="active" type="button" data-input-mode="action">行动</button>
+                <button type="button" data-input-mode="say">对话</button>
+                <button type="button" data-input-mode="story">描写</button>
+                <button type="button" data-input-mode="see">观看</button>
+              </div>
+              <input
+                id="message-input"
+                type="text"
+                placeholder="输入你的行动，例如：我跟着星辉深入森林"
+              />
+              <button class="primary-button" id="send-button" type="submit">发送</button>
+            </form>
+          </section>
+
+          <aside class="utility-rail" aria-label="故事工具栏">
+            <article class="status-panel">
+              <div class="section-title">
+                <span>故事状态</span>
+                <div class="status-actions">
+                  <button class="ghost-button small" type="button" data-toggle-status-panel>
+                    收起
+                  </button>
+                  <button class="ghost-button small" type="button" data-story-action="settings">
+                    编辑
+                  </button>
+                </div>
+              </div>
+              <div class="status-grid">
+                <div>
+                  <span>章节</span>
+                  <strong>第二章</strong>
+                </div>
+                <div>
+                  <span>主线进度</span>
+                  <strong>68%</strong>
+                </div>
+                <div class="wide">
+                  <span>当前目标</span>
+                  <strong>调查玄雾林中的星空裂隙</strong>
+                  <p>星盘被激活，事件即将进入下一阶段。</p>
+                </div>
+              </div>
+              <div class="progress-line">
+                <span style="width: 68%"></span>
+              </div>
+            </article>
+
+            <section class="systems-panel">
+              <div class="section-title">
+                <span>故事系统</span>
+                <button class="ghost-button small" type="button" data-story-action="settings">
+                  故事设置
+                </button>
+              </div>
+              <div class="system-accordions" id="story-systems"></div>
+            </section>
+
+            <aside class="memory-panel">
+              <div class="panel-header compact">
+                <div>
+                  <p class="eyebrow">Memory</p>
+                  <h3>事件总结</h3>
+                </div>
+              </div>
+              <div class="event-list">
+                <article class="event-card done">
+                  <span>已完成</span>
+                  <h4>森林入口</h4>
+                  <p>你救下白璃，获得玄雾林地图，确认黑袍人曾经出现。</p>
+                </article>
+                <article class="event-card active">
+                  <span>进行中</span>
+                  <h4>黑暗森林事件</h4>
+                  <p>星盘被激活，森林深处出现星空裂隙。事件结束后将进入“探索星空”。</p>
+                </article>
+                <article class="event-card">
+                  <span>下一步</span>
+                  <h4>探索星空</h4>
+                  <p>调查裂隙背后的天外文明，决定是否离开原本的修仙世界。</p>
+                </article>
+              </div>
+            </aside>
+          </aside>
+        </section>
+
+        <section class="view" id="templates-view">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">Storyboard</p>
+              <h2>故事板</h2>
+            </div>
+          </div>
+          <div class="story-board-grid" id="story-board"></div>
+        </section>
+
+        <section class="view" id="gallery-view">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">Visual Moments</p>
+              <h2>选择性观看画面</h2>
+            </div>
+            <button class="primary-button" type="button" data-generate-image>生成当前画面</button>
+          </div>
+          <div class="gallery-grid" id="gallery-grid"></div>
+        </section>
+
+        <section class="view" id="settings-view">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">Settings</p>
+              <h2>全局模型与规则设置</h2>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <section class="settings-card">
+              <div class="section-title">
+                <span>聊天模型</span>
+                <button class="secondary-button small" type="button" data-save-settings>保存</button>
+              </div>
+              <label>
+                API 地址
+                <input id="chat-api-url" type="url" placeholder="https://api.example.com" />
+              </label>
+              <label>
+                模型名
+                <input id="chat-model-name" type="text" placeholder="填写聊天模型名称" />
+              </label>
+              <label>
+                API Key
+                <input id="chat-api-key" type="password" placeholder="sk-..." />
+              </label>
+              <p class="settings-note">聊天模型配置全局复用，故事级设定不放在这里。</p>
+            </section>
+
+            <section class="settings-card">
+              <div class="section-title">
+                <span>生图接口</span>
+                <div class="section-actions">
+                  <button class="ghost-button small" type="button" data-test-image-settings>测试连接</button>
+                  <button class="secondary-button small" type="button" data-save-settings>保存</button>
+                </div>
+              </div>
+              <label>
+                生图 API 地址
+                <input id="image-api-url" type="url" placeholder="https://api.example.com/v1" />
+              </label>
+              <label>
+                生图模型
+                <input id="image-model-name" type="text" placeholder="填写生图模型名称" />
+              </label>
+              <label>
+                生图 API Key
+                <input id="image-api-key" type="password" placeholder="sk-..." />
+              </label>
+              <label>
+                本地代理地址
+                <input id="image-proxy-url" type="url" placeholder="http://127.0.0.1:8787/api/image" />
+              </label>
+              <label>
+                默认用途
+                <select id="image-default-purpose">
+                  <option value="关键节点画面">关键节点画面</option>
+                  <option value="章节封面">章节封面</option>
+                  <option value="人物立绘">人物立绘</option>
+                  <option value="场景氛围">场景氛围</option>
+                </select>
+              </label>
+              <label class="toggle-row">
+                <input id="use-image-proxy" type="checkbox" />
+                <span>优先使用本地代理</span>
+              </label>
+              <label class="toggle-row">
+                <input id="ask-image-cover" type="checkbox" />
+                <span>创建故事时自动建议生成封面</span>
+              </label>
+              <p class="settings-note">这里只保留全局生图配置，不混入单个故事的世界观信息。</p>
+              <p class="settings-note" id="image-settings-status">生图连接状态等待检测。</p>
+            </section>
+
+            <section class="settings-card">
+              <div class="section-title">
+                <span>叙事规则</span>
+                <button class="secondary-button small" type="button" data-save-settings>保存</button>
+              </div>
+              <label class="toggle-row">
+                <input id="rule-no-major-decision" type="checkbox" />
+                <span>不替主角做重大决定</span>
+              </label>
+              <label class="toggle-row">
+                <input id="rule-auto-summary" type="checkbox" />
+                <span>上下文偏长时自动建议总结</span>
+              </label>
+              <label class="toggle-row">
+                <input id="rule-next-step" type="checkbox" />
+                <span>回复末尾补充下一步建议</span>
+              </label>
+              <label>
+                回复长度
+                <select id="response-length">
+                  <option value="short">简短</option>
+                  <option value="balanced">均衡</option>
+                  <option value="long">偏长</option>
+                  <option value="immersive">沉浸</option>
+                </select>
+              </label>
+              <p class="settings-note" id="settings-status">保存后会写入本地全局设置。</p>
+            </section>
+
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="story-settings-dialog" class="create-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Story Root</p>
+            <h2>故事根设置</h2>
+          </div>
+          <button class="ghost-button icon-button" type="submit" value="cancel" aria-label="关闭">
+            <span class="dialog-close-mark" aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <details class="system-details" open>
+            <summary>基础信息</summary>
+            <div class="system-detail-body dialog-grid">
+              <label>
+                故事名
+                <input id="story-setting-title" type="text" />
+              </label>
+              <label>
+                类型
+                <input id="story-setting-type" type="text" />
+              </label>
+              <label title="成熟内容开关">
+                &
+                <span class="mature-toggle">
+                  <input id="story-mature-unlocked" type="checkbox" />
+                </span>
+              </label>
+            </div>
+          </details>
+
+          <details class="system-details" open>
+            <summary>世界观</summary>
+            <div class="system-detail-body">
+              <label>
+                世界背景
+                <textarea id="story-world" rows="6"></textarea>
+              </label>
+              <label>
+                当前主线目标
+                <textarea id="story-goal" rows="3"></textarea>
+              </label>
+            </div>
+          </details>
+
+          <details class="system-details">
+            <summary>主角</summary>
+            <div class="system-detail-body dialog-grid protagonist-settings-grid">
+              <label class="wide">
+                主角简介
+                <textarea id="story-protagonist-profile" rows="5"></textarea>
+              </label>
+              <label>
+                修为 / 能力
+                <input id="story-protagonist-cultivation" type="text" />
+              </label>
+              <label>
+                气运 / 倾向
+                <input id="story-protagonist-luck" type="text" />
+              </label>
+            </div>
+          </details>
+
+          <details class="system-details">
+            <summary>画面一致性</summary>
+            <div class="system-detail-body">
+              <div class="section-title">
+                <span>故事封面</span>
+                <button class="secondary-button small" id="story-generate-cover" type="button">生成故事封面</button>
+              </div>
+              <p class="settings-note">会先整理封面提示词并请你确认，生成成功后显示在故事板封面和画廊中。</p>
+              <div class="dialog-grid">
+                <label>
+                  默认画风
+                  <select id="story-visual-style">
+                    <option value="cinematic">电影感写实</option>
+                    <option value="concept-art">原画风格</option>
+                    <option value="anime">动漫风格</option>
+                    <option value="photoreal">写实摄影</option>
+                    <option value="oriental-fantasy">东方幻想</option>
+                  </select>
+                </label>
+                <label>
+                  统一风格附加词
+                  <input id="story-visual-style-note" type="text" placeholder="例如：高细节、月夜、柔焦、偏冷色" />
+                </label>
+              </div>
+              <label>
+                人物外观锚点：每行 `名称 | 发色、瞳色、体型、服饰标志、气质`
+                <textarea id="story-character-anchors" rows="6" placeholder="主角 | 黑发，瘦高，青色长袍，冷静克制&#10;白璃 | 银发，浅瞳，轻甲披风，神情警觉"></textarea>
+              </label>
+              <p class="settings-note">这些信息只服务画面一致性。后续生图会优先复用，尽量避免同一人物前后长相和服饰漂移。</p>
+            </div>
+          </details>
+
+          <details class="system-details">
+            <summary>长期设定：NPC / 物品 / 事件</summary>
+            <div class="system-detail-body">
+              <p class="settings-note">这里保留长期人物、关键物品和事件链设定；当前推进中的重点会显示在下面的只读区域。</p>
+              <label>
+                NPC：每行 `名称 | 关系 | 备注`
+                <textarea id="story-npcs" rows="5"></textarea>
+              </label>
+              <label>
+                物品：每行 `名称 | 状态`
+                <textarea id="story-inventory" rows="4"></textarea>
+              </label>
+              <label>
+                事件：每行 `标题 | 状态 | 描述`
+                <textarea id="story-events" rows="5"></textarea>
+              </label>
+            </div>
+          </details>
+
+          <details class="system-details">
+            <summary>世界书 / 世界树卡片</summary>
+            <div class="system-detail-body">
+              <div class="worldbook-import-block compact">
+                <div class="worldbook-import">
+                  <div class="worldbook-import-actions">
+                    <div class="worldbook-import-toolbar">
+                      <input id="story-worldbook-file" class="file-input-native" type="file" accept=".json,.txt,.md" />
+                      <button class="secondary-button" id="story-worldbook-pick" type="button">选择文件</button>
+                      <button class="secondary-button" id="story-worldbook-import" type="button" disabled>写入当前故事</button>
+                    </div>
+                    <div class="worldbook-file-meta">
+                      <strong id="story-worldbook-name">未选择任何文件</strong>
+                      <span class="settings-note" id="story-worldbook-count">等待导入</span>
+                    </div>
+                  </div>
+                  <div class="worldbook-import-preview" id="story-worldbook-preview" hidden>
+                    <div class="section-title">
+                      <span>导入预览</span>
+                    </div>
+                    <div class="worldbook-preview-list" id="story-worldbook-preview-list"></div>
+                  </div>
+                </div>
+              </div>
+              <label>
+                世界书：每行 `关键词 | 内容`
+                <textarea id="story-worldbook" rows="6"></textarea>
+              </label>
+              <p class="settings-note" id="story-worldbook-status">可导入 JSON / 文本世界书，再继续手动修改。</p>
+            </div>
+          </details>
+
+          <details class="system-details">
+            <summary>运行时推进（只读）</summary>
+            <div class="system-detail-body">
+              <label>
+                当前关键人物
+                <textarea id="story-runtime-npc" rows="3" readonly></textarea>
+              </label>
+              <label>
+                当前关键物品
+                <textarea id="story-runtime-item" rows="3" readonly></textarea>
+              </label>
+              <label>
+                当前事件链
+                <textarea id="story-runtime-events" rows="5" readonly></textarea>
+              </label>
+              <label>
+                当前状态
+                <textarea id="story-runtime-state" rows="3" readonly></textarea>
+              </label>
+              <label>
+                运行时推进
+                <textarea id="story-runtime-update" rows="5" readonly></textarea>
+              </label>
+              <label>
+                长期记忆
+                <textarea id="story-memory" rows="4" readonly></textarea>
+              </label>
+              <label>
+                压缩摘要
+                <textarea id="story-compressed" rows="5" readonly></textarea>
+              </label>
+            </div>
+          </details>
+        </div>
+
+        <menu>
+          <button class="secondary-button" type="submit" value="cancel">取消</button>
+          <button class="primary-button" id="save-story-settings" type="button">保存故事设置</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="context-dialog" class="create-dialog context-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Context</p>
+            <h2>发送给模型的上下文</h2>
+          </div>
+          <button class="ghost-button icon-button" type="submit" value="cancel" aria-label="关闭">
+            <span class="dialog-close-mark" aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <pre id="context-preview" class="context-preview"></pre>
+        </div>
+
+        <menu>
+          <button class="secondary-button" type="submit" value="cancel">关闭</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="image-prompt-dialog" class="create-dialog image-prompt-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">IMAGE PROMPT</p>
+            <h2>确认当前画面</h2>
+          </div>
+          <button class="ghost-button" type="button" data-close-dialog>
+            <span class="dialog-close-mark" aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="image-prompt-body">
+          <div class="dialog-grid image-prompt-grid">
+            <label>
+              绘画风格
+              <select id="image-style-preset">
+                <option value="cinematic">电影感写实</option>
+                <option value="concept-art">原画风格</option>
+                <option value="anime">动漫风格</option>
+                <option value="photoreal">写实摄影</option>
+                <option value="oriental-fantasy">东方幻想</option>
+              </select>
+            </label>
+            <label>
+              附加风格要求
+              <input id="image-style-note" type="text" placeholder="例如：月光、薄雾、人物近景、暖色火光" />
+            </label>
+          </div>
+          <label>
+            当前人物外观锚点
+            <textarea id="image-character-anchors" rows="4" readonly></textarea>
+          </label>
+          <label>
+            AI 绘画提示词
+            <textarea id="image-prompt-text" rows="10"></textarea>
+          </label>
+          <label class="toggle-row">
+            <input id="image-prompt-review" type="checkbox" checked />
+            <span>生成前进行审查并自动降风险</span>
+          </label>
+          <p id="image-prompt-status" class="settings-status">确认后才会提交给生图接口。</p>
+        </div>
+        <menu>
+          <button class="secondary-button" type="button" data-close-dialog>取消</button>
+          <button class="secondary-button" id="image-prompt-review-button" type="button">审查并优化</button>
+          <button class="primary-button" id="image-prompt-confirm" type="button">确认生成</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="image-preview-dialog" class="create-dialog image-preview-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">IMAGE</p>
+            <h2 id="image-preview-title">画面预览</h2>
+          </div>
+          <button class="ghost-button" type="button" data-close-dialog>
+            <span class="dialog-close-mark" aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="image-preview-body">
+          <img id="image-preview-img" alt="生成画面预览" />
+          <p id="image-preview-prompt"></p>
+        </div>
+        <menu>
+          <button class="secondary-button" type="button" data-close-dialog>关闭</button>
+          <button class="secondary-button" id="image-preview-folder" type="button">打开文件夹</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="create-dialog" class="create-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">New Story</p>
+            <h2>创建故事档案</h2>
+          </div>
+          <button class="ghost-button icon-button" type="submit" value="cancel" aria-label="关闭">
+            <span class="dialog-close-mark" aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <div class="dialog-grid">
+            <label>
+              故事名
+              <input id="create-title" type="text" placeholder="例如：星河入梦" />
+            </label>
+            <label>
+              类型
+              <input id="create-type" type="text" placeholder="例如：修仙 + 科幻" />
+            </label>
+            <label>
+              叙事视角
+              <select id="create-perspective">
+                <option value="first">第一人称：我推开酒馆的门</option>
+                <option value="second" selected>第二人称：你推开酒馆的门</option>
+                <option value="third">第三人称：林澈推开酒馆的门</option>
+              </select>
+            </label>
+            <label>
+              故事底稿
+              <input id="create-template" type="text" placeholder="例如：宗门秘境开局" />
+            </label>
+          </div>
+
+          <section class="worldbook-import-block">
+            <div class="section-title">
+              <span>导入世界树卡片 JSON / 文本</span>
+              <span class="settings-note">可先预览，再导入或直接用 AI 翻译并写入下面的故事设定。</span>
+            </div>
+            <div class="worldbook-import worldbook-import-layout">
+              <div class="worldbook-import-actions">
+                <div class="worldbook-import-toolbar">
+                  <input id="create-worldbook-file" class="file-input-native" type="file" accept=".json,.txt,.md" />
+                  <button class="secondary-button" id="create-worldbook-pick" type="button">选择文件</button>
+                  <button class="secondary-button" id="create-worldbook-translate" type="button" disabled>AI 翻译并写入</button>
+                </div>
+                <div class="worldbook-file-meta">
+                  <strong id="create-worldbook-name">未选择任何文件</strong>
+                  <span class="settings-note" id="create-worldbook-count"></span>
+                </div>
+              </div>
+
+              <div class="worldbook-import-preview" id="create-worldbook-preview">
+                <div class="section-title">
+                  <span>导入预览</span>
+                </div>
+                <div class="worldbook-preview-list" id="create-worldbook-preview-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="import-progress-card" id="create-import-progress" hidden>
+            <div class="import-progress-head">
+              <strong id="create-import-stage">等待导入</strong>
+              <span id="create-import-percent">0%</span>
+            </div>
+            <div class="progress-line import-progress-line">
+              <span id="create-import-progress-fill" style="width: 0%"></span>
+            </div>
+            <p class="settings-note" id="create-import-detail">选择文件后，可用 AI 翻译并写入下面的故事设定。</p>
+          </section>
+
+          <label>
+            故事大纲
+            <textarea
+              id="create-outline"
+              rows="6"
+              placeholder="写一句或一段大纲，例如：一个修仙少年在秘境中发现连接星空文明的残破星盘。"
+            ></textarea>
+          </label>
+
+          <div class="draft-panel">
+            <div class="section-title">
+              <span>故事设定草稿</span>
+              <button class="secondary-button small" id="enhance-outline" type="button">
+                AI 完善设定
+              </button>
+            </div>
+            <p class="settings-note draft-note">
+              世界观写长期背景与规则；主线目标写当前要推进的事情；补充设定词条只保留关键词知识，不重复填写世界观和主角简介。
+            </p>
+
+            <div class="draft-grid" id="create-draft">
+              <label>
+                世界观
+                <textarea id="draft-world" rows="5"></textarea>
+              </label>
+              <label>
+                主线目标
+                <textarea id="draft-goal" rows="4"></textarea>
+              </label>
+              <label>
+                主角简介
+                <textarea id="draft-protagonist" rows="4"></textarea>
+              </label>
+              <label>
+                主角状态
+                <textarea id="draft-state" rows="4"></textarea>
+              </label>
+              <label>
+                NPC：每行 `名称 | 关系 | 备注`
+                <textarea id="draft-npcs" rows="4"></textarea>
+              </label>
+              <label>
+                初始物品 / 线索：每行 `名称 | 状态`
+                <textarea id="draft-inventory" rows="4"></textarea>
+              </label>
+              <label>
+                事件：每行 `标题 | 状态(done/active/next) | 描述`
+                <textarea id="draft-events" rows="5"></textarea>
+              </label>
+              <label>
+                补充设定词条（世界书）：每行 `关键词 | 内容`
+                <textarea id="draft-worldbook" rows="5"></textarea>
+              </label>
+              <label>
+                开场白
+                <textarea id="draft-opening" rows="4"></textarea>
+              </label>
+            </div>
+
+            <p class="settings-note" id="create-status">等待输入大纲。</p>
+          </div>
+        </div>
+
+        <menu>
+          <button class="secondary-button" type="submit" value="cancel">取消</button>
+          <button class="primary-button" id="create-story-confirm" type="button">确认创建</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="./scripts/core.js?v=20260703-3"></script>
+    <script src="./scripts/story-data.js?v=20260703-2"></script>
+    <script src="./scripts/story-storage.js?v=20260703-1"></script>
+    <script src="./scripts/story-runtime.js?v=20260703-3"></script>
+    <script src="./scripts/prompt-presets.js?v=20260703-1"></script>
+    <script src="./scripts/story-engine.js?v=20260628-1"></script>
+    <script src="./scripts/story-editor.js?v=20260704-1"></script>
+    <script src="./scripts/ui-render.js?v=20260703-3"></script>
+    <script src="./scripts/ui-events.js?v=20260703-4"></script>
+    <script src="./scripts/dom.js?v=20260703-1"></script>
+    <script src="./scripts/state.js?v=20260702-1"></script>
+    <script src="./app.js?v=20260626-3"></script>
+    <script src="./scripts/bootstrap.js?v=20260628-1"></script>
+    <script>bootApplication();</script>
+  </body>
+</html>
+
+
+
+

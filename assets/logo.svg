@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="12" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2F2318" />
+      <stop offset="0.55" stop-color="#1A2026" />
+      <stop offset="1" stop-color="#0E1215" />
+    </linearGradient>
+    <linearGradient id="amber" x1="18" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE1A8" />
+      <stop offset="1" stop-color="#D8923F" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#bg)" stroke="rgba(255, 220, 160, 0.22)" stroke-width="1.5" />
+  <circle cx="32" cy="32" r="22" stroke="rgba(255, 220, 160, 0.14)" stroke-width="1.2" />
+  <path d="M22 23.5C22 21.6 23.6 20 25.5 20H38c1.9 0 3.5 1.6 3.5 3.5V41c0 1.9-1.6 3.5-3.5 3.5H25.5C23.6 44.5 22 42.9 22 41V23.5Z" fill="url(#amber)" />
+  <path d="M26 25h12" stroke="#1E160E" stroke-width="2.2" stroke-linecap="round" />
+  <path d="M27 31h10" stroke="#1E160E" stroke-width="2.2" stroke-linecap="round" />
+  <path d="M29 37h6" stroke="#1E160E" stroke-width="2.2" stroke-linecap="round" />
+  <path d="M41.5 22.5l1.2 2.2 2.3 1.2-2.3 1.2-1.2 2.2-1.2-2.2-2.3-1.2 2.3-1.2 1.2-2.2Z" fill="#FFE7BC" opacity="0.95" />
+  <circle cx="18.5" cy="18.5" r="1.5" fill="#FFE7BC" opacity="0.72" />
+</svg>

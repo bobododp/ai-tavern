@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" role="img" aria-label="中式酒馆与星空裂隙氛围图">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1411"/>
+      <stop offset="0.48" stop-color="#2a1717"/>
+      <stop offset="1" stop-color="#111b22"/>
+    </linearGradient>
+    <radialGradient id="lantern" cx="0.25" cy="0.23" r="0.36">
+      <stop offset="0" stop-color="#ffd083" stop-opacity="0.9"/>
+      <stop offset="0.32" stop-color="#d38a3e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d38a3e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="star" cx="0.72" cy="0.34" r="0.3">
+      <stop offset="0" stop-color="#9ed4ff" stop-opacity="0.92"/>
+      <stop offset="0.25" stop-color="#6f9fc9" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#6f9fc9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wood" x1="0" x2="1">
+      <stop offset="0" stop-color="#312017"/>
+      <stop offset="1" stop-color="#5b351f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="760" fill="url(#bg)"/>
+  <rect width="1400" height="760" fill="url(#lantern)"/>
+  <rect width="1400" height="760" fill="url(#star)"/>
+  <path d="M0 590 C190 520 337 560 480 508 C612 459 750 432 920 500 C1090 570 1230 536 1400 485 L1400 760 L0 760 Z" fill="#120f0d" opacity="0.72"/>
+  <path d="M0 624 C170 575 340 622 520 565 C681 514 828 529 965 584 C1115 646 1263 609 1400 555 L1400 760 L0 760 Z" fill="#0b1113" opacity="0.72"/>
+  <rect x="70" y="85" width="190" height="360" rx="8" fill="#211812" opacity="0.9"/>
+  <rect x="92" y="112" width="146" height="58" rx="6" fill="#7b372d" opacity="0.72"/>
+  <rect x="92" y="190" width="146" height="28" rx="4" fill="#b56d31" opacity="0.46"/>
+  <rect x="92" y="238" width="146" height="28" rx="4" fill="#b56d31" opacity="0.36"/>
+  <rect x="92" y="286" width="146" height="28" rx="4" fill="#b56d31" opacity="0.3"/>
+  <rect x="92" y="334" width="146" height="28" rx="4" fill="#75b8a1" opacity="0.22"/>
+  <rect x="92" y="382" width="146" height="28" rx="4" fill="#b56d31" opacity="0.32"/>
+  <rect x="1110" y="70" width="190" height="420" rx="8" fill="#151b1c" opacity="0.86"/>
+  <path d="M1138 102 L1272 102 L1272 455 L1138 455 Z" fill="#0b151c"/>
+  <path d="M1140 323 C1188 267 1235 275 1270 218" fill="none" stroke="#6f9fc9" stroke-width="2" opacity="0.55"/>
+  <path d="M1160 384 C1213 330 1230 328 1280 291" fill="none" stroke="#75b8a1" stroke-width="2" opacity="0.38"/>
+  <g opacity="0.55">
+    <circle cx="1188" cy="178" r="2" fill="#dcefff"/>
+    <circle cx="1250" cy="240" r="2" fill="#dcefff"/>
+    <circle cx="1218" cy="314" r="2" fill="#dcefff"/>
+    <circle cx="1169" cy="389" r="2" fill="#dcefff"/>
+  </g>
+  <g>
+    <ellipse cx="335" cy="212" rx="44" ry="62" fill="#9b4833"/>
+    <ellipse cx="335" cy="212" rx="27" ry="51" fill="#ffbd64" opacity="0.62"/>
+    <path d="M291 210 L379 210" stroke="#4a2419" stroke-width="5" opacity="0.55"/>
+    <path d="M335 55 L335 150" stroke="#6f3e25" stroke-width="5"/>
+    <rect x="307" y="147" width="56" height="18" rx="8" fill="#7a4828"/>
+  </g>
+  <g opacity="0.82">
+    <rect x="454" y="146" width="474" height="275" rx="10" fill="#10181c"/>
+    <rect x="474" y="166" width="434" height="235" rx="8" fill="#122431"/>
+    <path d="M505 350 C594 240 656 294 725 205 C788 126 857 192 888 154" fill="none" stroke="#9ed4ff" stroke-width="4" opacity="0.68"/>
+    <path d="M498 383 C612 324 668 362 760 281 C824 225 861 247 910 206" fill="none" stroke="#75b8a1" stroke-width="2" opacity="0.42"/>
+    <circle cx="724" cy="206" r="44" fill="#9ed4ff" opacity="0.13"/>
+    <circle cx="724" cy="206" r="4" fill="#f4fbff"/>
+    <circle cx="858" cy="192" r="3" fill="#f4fbff"/>
+    <circle cx="612" cy="286" r="3" fill="#f4fbff"/>
+  </g>
+  <path d="M0 506 L1400 506" stroke="#6b4024" stroke-width="22" opacity="0.7"/>
+  <path d="M0 530 L1400 530" stroke="#24150f" stroke-width="16" opacity="0.85"/>
+  <rect x="300" y="514" width="780" height="106" rx="10" fill="url(#wood)" opacity="0.9"/>
+  <rect x="342" y="548" width="155" height="40" rx="6" fill="#1c1210" opacity="0.58"/>
+  <rect x="525" y="548" width="96" height="40" rx="6" fill="#1c1210" opacity="0.4"/>
+  <rect x="653" y="548" width="220" height="40" rx="6" fill="#1c1210" opacity="0.48"/>
+  <rect x="900" y="548" width="116" height="40" rx="6" fill="#1c1210" opacity="0.43"/>
+  <g opacity="0.55">
+    <path d="M0 0 L1400 0 L1400 760 L0 760 Z" fill="none" stroke="#ffd083" stroke-width="2"/>
+    <rect x="34" y="34" width="1332" height="692" rx="18" fill="none" stroke="#ffd083" stroke-opacity="0.1"/>
+  </g>
+</svg>
